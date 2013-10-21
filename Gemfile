@@ -7,7 +7,6 @@ gem 'rails', '4.0.0'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', group: [:development, :test]
-gem 'pg', group: [:production]
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -52,3 +51,10 @@ gem 'thin'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+group :production do
+  gem 'rails_12factor'
+  gem 'shelly-dependencies'
+  gem 'pg'
+end
+
