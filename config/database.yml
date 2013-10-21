@@ -19,7 +19,11 @@ test:
   timeout: 5000
 
 production:
-  adapter: sqlite3
-  database: db/production.sqlite3
-  pool: 5
-  timeout: 5000
+  adapter:  postgresql
+  host:     localhost
+  encoding: unicode
+  database: cameloan_production
+  pool:     5
+  username: postgres
+  password: 
+
