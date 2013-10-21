@@ -1,14 +1,35 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Cameloan</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "Cameloan" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Cameloan" %>">
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js" %>
+    <%= javascript_include_tag "//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular-resource.min.js" %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+    <%= yield(:head) %>
+  </head>
 
-<%= yield %>
+  <body class="<%= controller_name %> <%= action_name %>">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <%= render 'layouts/navigation' %>
+      </div>
+    </div>
 
-</body>
+    <div class="container">
+      <div class="row">
+        <div class="span12">
+          <%= render 'layouts/messages' %>
+          <%= yield %>
+        </div>
+      </div>
+
+      <footer>
+        <p>&copy; Wolftek Technology Sdn. Bhd. 2013</p>
+      </footer>
+    </div> <!--! end of .container -->
+  </body>
 </html>

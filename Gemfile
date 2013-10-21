@@ -39,11 +39,14 @@ gem 'devise'
 gem 'cancan'
 gem 'rolify'
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+# Use Twitter Bootstrap as css framework
+gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
+                              :github => 'anjlab/bootstrap-rails'
 
-# Use unicorn as the app server
-# gem 'unicorn'
+# Use ActiveModel has_secure_password
+gem 'bcrypt-ruby'
+
+# Use thin as the app server
 gem 'thin'
 
 # Use Capistrano for deployment
