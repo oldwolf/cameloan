@@ -3,7 +3,7 @@
 </div>
 
 <div class="collapse navbar-collapse navbar-ex1-collpase">
-  <ul class="nav navbar-nav navbar-right">
+  <ul class="nav navbar-nav">
     <% if user_signed_in? %>
       <li><%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %></li>
     <% else %>
