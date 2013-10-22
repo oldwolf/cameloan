@@ -1,16 +1,19 @@
 <div class="container">
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "form-signin") do |f| %>
+  <%= form_for(resource, html: { class: "form-devise" }, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-    <h2 class="form-signin-heading">Please sign in</h2>
-    <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email Address" %>
+    <h2 class="form-devise-heading">Log in to your company</h2>
+    <%= f.text_field :subdomain, autofocus: true, class: "form-control", placeholder: "Company Address" %>
+    <%= f.email_field :email, class: "form-control", placeholder: "Email" %>
     <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
 
     <% if devise_mapping.rememberable? -%>
       <%= f.check_box :remember_me %> <%= f.label :remember_me %>
     <% end -%>
 
-    <%= f.submit "Sign in", class: "btn btn-lg btn-primary btn-block" %>
-  <% end %>
+    <%= f.submit "Sign in", class: "btn btn-lg btn-primary pull-right" %>
 
-  <%= render "devise/shared/links" %>
+    <hr>
+
+    <%= render "devise/shared/links" %>
+  <% end %>
 </div>

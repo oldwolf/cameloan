@@ -15,14 +15,14 @@
   <body class="<%= controller_name %> <%= action_name %>">
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
-        <%= render 'layouts/navigation' %>
+        <%= render 'layouts/manager/navigation' %>
       </div>
     </nav>
 
     <div class="container">
       <div class="row">
         <div class="span12">
-          <%= render 'layouts/messages' %>
+          <%= render 'layouts/manager/messages' %>
           <%= yield %>
         </div>
       </div>
