@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131021081426) do
+ActiveRecord::Schema.define(version: 20131023023044) do
+
+  create_table "parties", force: true do |t|
+    t.string   "name"
+    t.decimal  "monthly_income", default: 0.0, null: false
+    t.string   "type"
+    t.integer  "tenant_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "parties", ["tenant_id"], name: "index_parties_on_tenant_id"
 
   create_table "roles", force: true do |t|
     t.string   "name"

@@ -10,7 +10,7 @@
 
     <div class="well">
       <div class="form-group">
-        <%= f.text_field :tenant, :autofocus => true, class: "form-control", placeholder: "Company Name" %>
+        <%= f.text_field :tenant_name, :autofocus => true, class: "form-control", placeholder: "Company Name" %>
       </div>
 
       <div class="form-group">
@@ -27,6 +27,10 @@
 
       <div class="form-group">
         <%= f.submit "Create your account now", class: "btn btn-lg btn-success" %>
+      </div>
+
+      <div class="manager-welcome">
+        <p>Already have an account? <%= link_to "Log in here", new_user_session_path %></p>
       </div>
     </div>
   <% end %>
