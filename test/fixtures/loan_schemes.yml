@@ -1,0 +1,61 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  description: MyText
+  maturity_date: 2013-11-06
+  agent_id: 1
+  debtor_id: 1
+  creditor_id: 1
+  maximum_amount: 9.99
+  interest_rate: 9.99
+  is_salary_before_tax: false
+  salary_income: 9.99
+  need_salary_statement: false
+  minimum_working_period: 1
+  minimum_working_period_unit_id: 1
+  country_id: 1
+  state_id: 1
+  city_id: 1
+  minimum_age_requirement: 1
+  maximum_age_requirement: 1
+  period_unit_id: 1
+  minimum_period: 1
+  maximum_period: 1
+  interest_rate: 9.99
+  interest_amount: 9.99
+  interest_type: MyString
+  need_mortgage: false
+  need_guarantor: false
+  fastest_approval_day: 1
+  tenant_id: 1
+
+two:
+  name: MyString
+  description: MyText
+  maturity_date: 2013-11-06
+  agent_id: 1
+  debtor_id: 1
+  creditor_id: 1
+  maximum_amount: 9.99
+  interest_rate: 9.99
+  is_salary_before_tax: false
+  salary_income: 9.99
+  need_salary_statement: false
+  minimum_working_period: 1
+  minimum_working_period_unit_id: 1
+  country_id: 1
+  state_id: 1
+  city_id: 1
+  minimum_age_requirement: 1
+  maximum_age_requirement: 1
+  period_unit_id: 1
+  minimum_period: 1
+  maximum_period: 1
+  interest_rate: 9.99
+  interest_amount: 9.99
+  interest_type: MyString
+  need_mortgage: false
+  need_guarantor: false
+  fastest_approval_day: 1
+  tenant_id: 1

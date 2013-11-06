@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :confirmable
 
-  validates :email, uniqueness: { scope: :account_id }, case_sensitive: false
+  validates :email, presence: true, uniqueness: { scope: :tenant_id }, case_sensitive: false
+  validates :password, presence: true, confirmation: true
 
   def subdomain=(value)
 
