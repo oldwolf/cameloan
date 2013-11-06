@@ -3,14 +3,10 @@ class CreateLoanSchemes < ActiveRecord::Migration
     create_table :loan_schemes do |t|
       t.string :name
       t.text :description
-      t.date :maturity_date
-      t.integer :agent_id
-      t.integer :debtor_id
-      t.integer :creditor_id
       t.decimal :maximum_amount
       t.decimal :interest_rate
-      t.boolean :is_salary_before_tax
-      t.decimal :salary_income
+      t.boolean :is_income_before_tax
+      t.decimal :income
       t.boolean :need_salary_statement
       t.integer :minimum_working_period
       t.integer :minimum_working_period_unit_id
@@ -32,10 +28,9 @@ class CreateLoanSchemes < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :loan_schemes, :agent_id
-    add_index :loan_schemes, :debtor_id
-    add_index :loan_schemes, :creditor_id
+    add_index :loan_schemes, :income
     add_index :loan_schemes, :minimum_working_period
+    add_index :loan_schemes, :minimum_working_period_unit_id
     add_index :loan_schemes, :country_id
     add_index :loan_schemes, :state_id
     add_index :loan_schemes, :city_id
@@ -44,5 +39,8 @@ class CreateLoanSchemes < ActiveRecord::Migration
     add_index :loan_schemes, :minimum_period
     add_index :loan_schemes, :maximum_period
     add_index :loan_schemes, :tenant_id
+    add_index :loan_schemes, :need_mortgage
+    add_index :loan_schemes, :need_guarantor
+    add_index :loan_schemes, :interest_rate
   end
 end
