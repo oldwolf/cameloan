@@ -11,10 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131106110224) do
+ActiveRecord::Schema.define(version: 20131106112744) do
 
   create_table "addresses", force: true do |t|
     t.string   "category"
+    t.integer  "addressable_id"
+    t.string   "addressable_type"
     t.integer  "country_id"
     t.integer  "state_id"
     t.integer  "city"
@@ -26,9 +28,20 @@ ActiveRecord::Schema.define(version: 20131106110224) do
     t.datetime "updated_at"
   end
 
+  add_index "addresses", ["addressable_id"], name: "index_addresses_on_addressable_id"
   add_index "addresses", ["city"], name: "index_addresses_on_city"
   add_index "addresses", ["country_id"], name: "index_addresses_on_country_id"
   add_index "addresses", ["state_id"], name: "index_addresses_on_state_id"
+
+  create_table "contacts", force: true do |t|
+    t.string   "name"
+    t.integer  "tenant_id"
+    t.decimal  "income"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "contacts", ["tenant_id"], name: "index_contacts_on_tenant_id"
 
   create_table "loan_schemes", force: true do |t|
     t.string   "name"
@@ -75,16 +88,16 @@ ActiveRecord::Schema.define(version: 20131106110224) do
   add_index "loan_schemes", ["state_id"], name: "index_loan_schemes_on_state_id"
   add_index "loan_schemes", ["tenant_id"], name: "index_loan_schemes_on_tenant_id"
 
-  create_table "parties", force: true do |t|
-    t.string   "name"
-    t.decimal  "monthly_income", default: 0.0, null: false
-    t.string   "type"
-    t.integer  "tenant_id"
+  create_table "phones", force: true do |t|
+    t.string   "phonable_type"
+    t.integer  "phonable_id"
+    t.string   "category"
+    t.string   "number"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "parties", ["tenant_id"], name: "index_parties_on_tenant_id"
+  add_index "phones", ["phonable_id"], name: "index_phones_on_phonable_id"
 
   create_table "roles", force: true do |t|
     t.string   "name"

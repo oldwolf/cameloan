@@ -2,8 +2,10 @@
 
 one:
   name: MyString
-  tenant_id: 
+  tenant_id: 1
+  income: 9.99
 
 two:
   name: MyString
-  tenant_id: 
+  tenant_id: 1
+  income: 9.99

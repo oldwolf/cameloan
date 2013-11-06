@@ -63,5 +63,9 @@ Cameloan::Application.routes.draw do
 
   namespace :manager do
     get "home/welcome"
+    get "home/dashboard"
+
+    resources :contacts
+    resources :loan_schemes
   end
 end

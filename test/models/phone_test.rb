@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class PartyTest < ActiveSupport::TestCase
+class PhoneTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

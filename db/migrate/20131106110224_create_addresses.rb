@@ -2,6 +2,8 @@ class CreateAddresses < ActiveRecord::Migration
   def change
     create_table :addresses do |t|
       t.string :category
+      t.integer :addressable_id
+      t.string :addressable_type
       t.integer :country_id
       t.integer :state_id
       t.integer :city
@@ -15,5 +17,6 @@ class CreateAddresses < ActiveRecord::Migration
     add_index :addresses, :country_id
     add_index :addresses, :state_id
     add_index :addresses, :city
+    add_index :addresses, :addressable_id
   end
 end
