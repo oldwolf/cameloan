@@ -11,7 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131106090514) do
+ActiveRecord::Schema.define(version: 20131106110224) do
+
+  create_table "addresses", force: true do |t|
+    t.string   "category"
+    t.integer  "country_id"
+    t.integer  "state_id"
+    t.integer  "city"
+    t.string   "street1"
+    t.integer  "street2"
+    t.integer  "street3"
+    t.text     "full_address"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "addresses", ["city"], name: "index_addresses_on_city"
+  add_index "addresses", ["country_id"], name: "index_addresses_on_country_id"
+  add_index "addresses", ["state_id"], name: "index_addresses_on_state_id"
 
   create_table "loan_schemes", force: true do |t|
     t.string   "name"
@@ -83,6 +100,13 @@ ActiveRecord::Schema.define(version: 20131106090514) do
   create_table "tenants", force: true do |t|
     t.string   "name"
     t.string   "subdomain"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "units", force: true do |t|
+    t.string   "name"
+    t.string   "category"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
