@@ -1,0 +1,13 @@
+<% @loanscheme.each do |loan|%>
+ <ul >
+ <li style="width:22%" ><%=loan.name%></li>
+ <li style="width:22%" ><%=loan.interest_rate%></li>
+ <li style="width:17%" ><%=loan.income%></li>
+ <li style="width:13%" ><%=loan.maximum_period%></li>
+ <li style="width:13%" ><%=loan.maximum_amount%>,<%=loan.minimum_age_requirement%></li>
+ <li style="width:11%" ><%=loan.id%></li>
+</ul>
+<div class="clear-float"></div>
+<% end %>
+		  
+	

@@ -1,5 +1,67 @@
 <div class="container">
   <div class="page-header">
-    <h1>骆驼信贷管理系统 <small>这是显示贷款方案的页面</small></h1>
+    <h1>骆驼信贷管理系统  <small>这是显示贷款方案的页面</small></h1>
+  </div>
+  <div>
+	<!-- 搜索条件-->
+	
+	<div class="search">
+	 <div class="left-search ">
+		<div>
+		   <h5> How much would you like to borrow?</h5>
+		   <div class="left-search-div">
+		    <span>$</span> <input type="number" id="borrow" placeholder=" How much would you like to borrow?"  min="2000" max="150000" step="1000" />
+		   </div>
+		  
+		</div>
+		<div class="clear-float"></div>
+		<div>
+		   <h5> For how long?</h5>
+		   <div class="left-search-div">
+		    <span>years</span> <input type="number" placeholder="For how long?" id="borrowingDeadline" min="1" max="10" step="1" />
+		   </div>
+		</div>
+     </div>
+
+	<div class="right-search-div">
+			<div>
+			   <h5> Tell us a little bit about yourself:</h5>
+			   <div>
+				<span>Age?</span> <input type="number" id="minage" min="18" max="60" placeholder="Age?"/>
+			   </div>
+			   <div>
+				<span>Monthly income?</span> <input type="number" min="2000" step="100" id="monthlyIncome" placeholder="Monthly income?" />
+			   </div>
+			   <div class="calculate-button">
+				<button type="button" id="calculate"  class="btn btn-sm btn-success">Calculate</button>
+			   </div>
+			</div>
+			
+		 </div>
+		 <div class="clear-float"></div>
+	</div>
+   
+  </div>
+	 
+	<!-- 搜索结果 -->
+	<div class="search-results">
+	  <div class="search-results-header">
+		 <ul class="search-results-ul">
+			<li style="width:22%" >Bank & Product Name</li>
+			<li style="width:22%" >Interest / Profit Rate <span class="extra-info">(% per year)</span>
+			</li>
+			<li style="width:17%" >Minimum Income <span class="extra-info">(monthly)</span></li>
+			<li style="width:13%" >Max Loan Term</li>
+			<li style="width:13%" >Installment<span class="extra-info">(monthly)</span></li>
+			<li style="width:11%" >Apply</li>
+		 </ul>
+		
+	  </div>
+		<div class="clear-float"></div>
+		<div class="search-results-content" id="searchResultsContent">
+		
+		</div>
+		<div class="clear-float"></div>
+	</div>
   </div>
 </div>
