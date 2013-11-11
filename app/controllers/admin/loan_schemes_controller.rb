@@ -1,4 +1,4 @@
-class Manager::LoansController < Manager::ApplicationController
+class Admin::LoanSchemesController < Admin::ApplicationController
   def index
   end
 
@@ -17,6 +17,6 @@ class Manager::LoansController < Manager::ApplicationController
   private
 
   def safe_params
-    params.require(:loans).permit(:id)
+    params.require(:contacts).permit(:id, :name)
   end
 end

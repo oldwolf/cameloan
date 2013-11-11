@@ -61,11 +61,16 @@ Cameloan::Application.routes.draw do
   #     resources :products
   #   end
 
-  namespace :manager do
-    get "home/welcome"
-    get "home/dashboard"
+  constraints(Subdomain) do
+    namespace :admin do
+      get "home/welcome"
+      get "home/dashboard"
 
-    resources :contacts
-    resources :loan_schemes
+      root "home#welcome"
+
+      resources :contacts
+      resources :loan_schemes
+      resources :loans
+    end
   end
 end

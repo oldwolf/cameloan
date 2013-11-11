@@ -1,5 +1,6 @@
-class Manager::HomeController < Manager::ApplicationController
+class Admin::HomeController < Admin::ApplicationController
   def welcome
+    redirect_to admin_home_dashboard_url
   end
 
   def dashboard
