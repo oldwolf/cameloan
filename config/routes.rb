@@ -2,6 +2,7 @@ Cameloan::Application.routes.draw do
   get "home/welcome"
   get "home/about"
   get "home/contact"
+  post "home/showscheme"
 
   devise_for :users
 
