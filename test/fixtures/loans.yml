@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  interest_rate: 9.99
+  interest_amount: 9.99
+  interest_type: MyString
+  maturity_date: 2013-11-06
+  agent_id: 1
+  debtor_id: 1
+  collector_id: 1
+  tenant_id: 
+  status: MyString
+
+two:
+  interest_rate: 9.99
+  interest_amount: 9.99
+  interest_type: MyString
+  maturity_date: 2013-11-06
+  agent_id: 1
+  debtor_id: 1
+  collector_id: 1
+  tenant_id: 
+  status: MyString

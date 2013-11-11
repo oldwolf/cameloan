@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131106112744) do
+ActiveRecord::Schema.define(version: 20131106144221) do
 
   create_table "addresses", force: true do |t|
     t.string   "category"
@@ -85,6 +85,25 @@ ActiveRecord::Schema.define(version: 20131106112744) do
   add_index "loan_schemes", ["need_mortgage"], name: "index_loan_schemes_on_need_mortgage"
   add_index "loan_schemes", ["state_id"], name: "index_loan_schemes_on_state_id"
   add_index "loan_schemes", ["tenant_id"], name: "index_loan_schemes_on_tenant_id"
+
+  create_table "loans", force: true do |t|
+    t.decimal  "interest_rate"
+    t.decimal  "interest_amount"
+    t.string   "interest_type"
+    t.date     "maturity_date"
+    t.integer  "agent_id"
+    t.integer  "debtor_id"
+    t.integer  "collector_id"
+    t.integer  "tenant_id"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "loans", ["agent_id"], name: "index_loans_on_agent_id"
+  add_index "loans", ["collector_id"], name: "index_loans_on_collector_id"
+  add_index "loans", ["debtor_id"], name: "index_loans_on_debtor_id"
+  add_index "loans", ["tenant_id"], name: "index_loans_on_tenant_id"
 
   create_table "phones", force: true do |t|
     t.string   "phonable_type"
