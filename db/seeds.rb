@@ -5,3 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Tenant.all.destroy_all
+Contact.all.destroy_all
+LoanScheme.all.destroy_all
+
+tenant = Tenant.create(name: 'Cameloan', subdomain: 'cameloan')
+
+contact = Contact.create([{name: 'Oldwolf', income: 3000, tenant: tenant}, {name: 'Tang Xiao', income: 3500, tenant: tenant}])
+
+loan_scheme = LoanScheme.create( name: 'Loan Scheme 1', description: 'Loan Scheme 1 description', maximum_amount: 100000, interest_rate: 12, is_income_before_tax: false, income: 2000, need_income_statement: true, minimum_working_period: 6, minimum_age_requirement: 20, maximum_age_requirement: 60, minimum_loan_period: 6, maximum_loan_period: 36, need_mortgage: false, need_guarantor: false, fastest_approval_day: 3, tenant: tenant)

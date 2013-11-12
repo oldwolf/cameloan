@@ -10,11 +10,11 @@ class Admin::ContactsController < Admin::ApplicationController
   end
 
   def create
-    @contact = Contact.new(contact_params)
+    @contact = Contact.new(safe_params)
 
     respond_to do |format|
       if @contact.save
-        format.html { redirect_to edit_contact_path(@contact), notice: "Contact was successfully created." }
+        format.html { redirect_to edit_admin_contact_path(@contact), notice: "Contact was successfully created." }
       else
         format.html { render action: 'new' }
       end
@@ -27,8 +27,8 @@ class Admin::ContactsController < Admin::ApplicationController
 
   def update
     respond_to do |format|
-      if @contact.update(contact_params)
-        format.html { redirect_to edit_contact_path(@contact), notice: 'Contact was successfully updated.' }
+      if @contact.update(safe_params)
+        format.html { redirect_to edit_admin_contact_path(@contact), notice: 'Contact was successfully updated.' }
       else
         format.html { render action: 'edit' }
       end
@@ -41,7 +41,7 @@ class Admin::ContactsController < Admin::ApplicationController
   def destroy
     @contact.destroy
     respond_to do |format|
-      format.html { redirect_to contacts_url }
+      format.html { redirect_to admin_contacts_url }
       format.json { head :no_content }
     end
   end
@@ -54,6 +54,6 @@ class Admin::ContactsController < Admin::ApplicationController
     end
 
     def safe_params
-      params.require(:contacts).permit(:id, :name)
+      params.require(:contact).permit(:id, :name, :tenant_id, :income)
     end
 end
