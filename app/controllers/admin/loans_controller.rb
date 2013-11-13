@@ -1,4 +1,4 @@
-class Manager::LoansController < Manager::ApplicationController
+class Admin::LoansController < Admin::ApplicationController
   def index
   end
 

@@ -1,0 +1,29 @@
+<div class="row well">
+
+  <%= render "admin/shared/navigation" %>
+
+  <div class="col-md-9">
+    <div class="well">
+      <%= link_to '<span class="glyphicon glyphicon-plus-sign"></span> Add new contact'.html_safe, new_admin_contact_path, { class: "btn btn-primary" } %>
+
+      <table class="table table-condensed">
+        <thead>
+          <tr>
+            <td>Name</td>
+            <td>Income</td>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @contacts.each do |contact| %>
+            <tr>
+              <td><%= link_to contact.name, edit_admin_contact_path(contact) %></td>
+              <td><%= contact.income %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
