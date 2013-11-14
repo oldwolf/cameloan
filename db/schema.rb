@@ -48,25 +48,27 @@ ActiveRecord::Schema.define(version: 20131106144221) do
     t.text     "description"
     t.decimal  "minimum_amount"
     t.decimal  "maximum_amount"
-    t.decimal  "interest_rate"
-    t.boolean  "is_income_before_tax"
-    t.decimal  "income"
+    t.decimal  "interest_rate",           default: 12.0,   null: false
+    t.boolean  "is_income_before_tax",    default: true,   null: false
+    t.decimal  "income",                  default: 1500.0, null: false
     t.boolean  "need_income_statement"
-    t.integer  "minimum_working_period"
+    t.integer  "minimum_working_period",  default: 6,      null: false
     t.integer  "working_period_unit_id"
     t.integer  "country_id"
     t.integer  "state_id"
     t.integer  "city_id"
-    t.integer  "minimum_age_requirement"
-    t.integer  "maximum_age_requirement"
+    t.integer  "minimum_age_requirement", default: 20,     null: false
+    t.integer  "maximum_age_requirement", default: 60,     null: false
     t.integer  "loan_period_unit_id"
-    t.integer  "minimum_loan_period"
-    t.integer  "maximum_loan_period"
-    t.decimal  "interest_amount"
-    t.string   "interest_type"
-    t.boolean  "need_mortgage"
-    t.boolean  "need_guarantor"
-    t.integer  "fastest_approval_day"
+    t.integer  "minimum_loan_period",     default: 6,      null: false
+    t.integer  "maximum_loan_period",     default: 36,     null: false
+    t.boolean  "need_mortgage",           default: false,  null: false
+    t.boolean  "need_guarantor",          default: false,  null: false
+    t.integer  "fastest_approval_day",    default: 3,      null: false
+    t.boolean  "pulished",                default: true,   null: false
+    t.boolean  "active",                  default: true,   null: false
+    t.datetime "start_at"
+    t.datetime "stop_at"
     t.integer  "tenant_id"
     t.datetime "created_at"
     t.datetime "updated_at"

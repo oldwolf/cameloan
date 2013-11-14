@@ -5,26 +5,27 @@ class CreateLoanSchemes < ActiveRecord::Migration
       t.text :description
       t.decimal :minimum_amount
       t.decimal :maximum_amount
-      t.decimal :interest_rate
-      t.boolean :is_income_before_tax
-      t.decimal :income
+      t.decimal :interest_rate, null: false, default: 12
+      t.boolean :is_income_before_tax, null: false, default: true
+      t.decimal :income, null: false, default: 1500
       t.boolean :need_income_statement
-      t.integer :minimum_working_period
+      t.integer :minimum_working_period, null: false, default: 6
       t.integer :working_period_unit_id
       t.integer :country_id
       t.integer :state_id
       t.integer :city_id
-      t.integer :minimum_age_requirement
-      t.integer :maximum_age_requirement
+      t.integer :minimum_age_requirement, null: false, default: 20
+      t.integer :maximum_age_requirement, null: false, default: 60
       t.integer :loan_period_unit_id
-      t.integer :minimum_loan_period
-      t.integer :maximum_loan_period
-      t.decimal :interest_rate
-      t.decimal :interest_amount
-      t.string :interest_type
-      t.boolean :need_mortgage
-      t.boolean :need_guarantor
-      t.integer :fastest_approval_day
+      t.integer :minimum_loan_period, null: false, default: 6
+      t.integer :maximum_loan_period, null: false, default: 36
+      t.boolean :need_mortgage, null: false, default: false
+      t.boolean :need_guarantor, null: false, default: false
+      t.integer :fastest_approval_day, null: false, default: 3
+      t.boolean :pulished, null: false, default: true
+      t.boolean :active, null: false, default: true
+      t.datetime :start_at
+      t.datetime :stop_at
       t.integer :tenant_id
 
       t.timestamps

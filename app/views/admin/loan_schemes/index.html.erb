@@ -5,6 +5,25 @@
   <div class="col-md-9">
     <div class="well">
       <%= link_to '<span class="glyphicon glyphicon-plus-sign"></span> Add new loan scheme'.html_safe, new_admin_loan_scheme_path, { class: "btn btn-primary" } %>
+
+       <table class="table table-condensed">
+        <thead>
+          <tr>
+            <td>Name</td>
+            <td>Interest Rate</td>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @loan_schemes.each do |loan_scheme| %>
+            <tr>
+              <td><%= link_to loan_scheme.name, edit_admin_loan_scheme_path(loan_scheme) %></td>
+              <td><%= loan_scheme.interest_rate %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
     </div>
   </div>
 </div>

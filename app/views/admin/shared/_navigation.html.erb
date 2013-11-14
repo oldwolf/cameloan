@@ -2,13 +2,12 @@
   <div class="well">
     <ul class="nav nav-pills nav-stacked">
       <li><%= link_to '<span class="glyphicon glyphicon-home"></span> Dashboard'.html_safe, admin_home_dashboard_url %></li>
-      <li class="<%= 'active' if current_page?(admin_contacts_url) %>"><%= link_to '<span class="glyphicon glyphicon-user"></span> Contacts'.html_safe, admin_contacts_url %></li>
-      <li class="<%= 'active' if current_page?(admin_loan_schemes_url) %>"><%= link_to '<span class="glyphicon glyphicon-list"></span> Loan Schemes'.html_safe, admin_loan_schemes_url %></li>
-      <li class="<%= 'active' if current_page?(admin_loans_url) %>"><%= link_to '<span class="glyphicon glyphicon-usd"></span> Loans'.html_safe, admin_loans_url %></li>
+      <li class="<%= 'active' if params[:controller] == 'admin/contacts' %>"><%= link_to '<span class="glyphicon glyphicon-user"></span> Contacts'.html_safe, admin_contacts_url %></li>
+      <li class="<%= 'active' if params[:controller] == 'admin/loan_schemes' %>"><%= link_to '<span class="glyphicon glyphicon-list"></span> Loan Schemes'.html_safe, admin_loan_schemes_url %></li>
+      <li class="<%= 'active' if params[:controller] == 'admin/loans' %>"><%= link_to '<span class="glyphicon glyphicon-usd"></span> Loans'.html_safe, admin_loans_url %></li>
       <li><%= link_to '<span class="glyphicon glyphicon-briefcase"></span> Collections'.html_safe, "#" %></li>
       <li><%= link_to '<span class="glyphicon glyphicon-list-alt"></span> Reports'.html_safe, "#" %></li>
     </ul>
   </div>
 </div>
-
 
