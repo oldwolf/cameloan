@@ -71,6 +71,7 @@ Cameloan::Application.routes.draw do
       resources :contacts
       resources :loan_schemes
       resources :loans
+      resources :settings, only: [:edit, :update]
     end
   end
 end
