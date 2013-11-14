@@ -10,7 +10,9 @@ Tenant.all.destroy_all
 Contact.all.destroy_all
 LoanScheme.all.destroy_all
 
-tenant = Tenant.create(name: 'Cameloan', subdomain: 'cameloan')
+tenants = Tenant.create([{name: 'Cameloan', subdomain: 'cameloan'}, {name: 'Example', subdomain: 'example'}])
+
+tenant = tenants.first
 
 contact = Contact.create([{name: 'Oldwolf', income: 3000, tenant: tenant}, {name: 'Tang Xiao', income: 3500, tenant: tenant}])
 

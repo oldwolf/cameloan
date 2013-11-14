@@ -61,3 +61,5 @@ group :production do
   gem 'pg'
 end
 
+# For multitenancy
+gem 'acts_as_tenant'

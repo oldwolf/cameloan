@@ -33,6 +33,9 @@ GEM
       multi_json (~> 1.3)
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
+    acts_as_tenant (0.3.1)
+      rails (>= 3.1)
+      request_store (>= 1.0.5)
     arel (4.0.0)
     atomic (1.1.14)
     bcrypt-ruby (3.1.2)
@@ -99,6 +102,7 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     ref (1.0.5)
+    request_store (1.0.5)
     rolify (3.2.0)
     sass (3.2.12)
     sass-rails (4.0.1)
@@ -148,6 +152,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_tenant
   anjlab-bootstrap-rails!
   bcrypt-ruby
   cancan

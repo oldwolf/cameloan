@@ -19,7 +19,6 @@ class Admin::LoanSchemesController < Admin::ApplicationController
         format.html { render action: 'new' }
       end
     end
-
   end
 
   def edit
@@ -33,7 +32,6 @@ class Admin::LoanSchemesController < Admin::ApplicationController
         format.html { render action: 'edit' }
       end
     end
-
   end
 
   # DELETE /loan_schemes/1
