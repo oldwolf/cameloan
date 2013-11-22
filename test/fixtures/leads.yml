@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  contact_name: MyString
+  contact_email: MyString
+  contact_phone: MyString
+  loan_scheme_id: 1
+  tenant_id: MyString
+
+two:
+  contact_name: MyString
+  contact_email: MyString
+  contact_phone: MyString
+  loan_scheme_id: 1
+  tenant_id: MyString

@@ -9,5 +9,6 @@ class CreatePhones < ActiveRecord::Migration
       t.timestamps
     end
     add_index :phones, :phonable_id
+
   end
 end
