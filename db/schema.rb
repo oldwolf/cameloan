@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131122090459) do
+ActiveRecord::Schema.define(version: 201311191517222) do
 
   create_table "addresses", force: true do |t|
     t.string   "category"
@@ -45,15 +45,22 @@ ActiveRecord::Schema.define(version: 20131122090459) do
 
   create_table "leads", force: true do |t|
     t.string   "contact_name"
-    t.string   "contact_email"
     t.string   "contact_phone"
+    t.string   "contact_email"
+    t.string   "contact_address"
+    t.decimal  "contact_salary"
+    t.integer  "contact_age"
+    t.integer  "contact_borrow_amount"
+    t.integer  "contact_loan_period"
+    t.string   "status"
+    t.integer  "tenant_id"
     t.integer  "loan_scheme_id"
-    t.string   "tenant_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "leads", ["loan_scheme_id"], name: "index_leads_on_loan_scheme_id"
+  add_index "leads", ["status"], name: "index_leads_on_status"
   add_index "leads", ["tenant_id"], name: "index_leads_on_tenant_id"
 
   create_table "loan_schemes", force: true do |t|
