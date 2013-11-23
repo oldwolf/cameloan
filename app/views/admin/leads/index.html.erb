@@ -10,7 +10,10 @@
         <thead>
           <tr>
             <td>Name</td>
-            <td>Income</td>
+            <td>Email</td>
+            <td>Phone</td>
+            <td>Loan Scheme</td>
+            <td>Status</td>
           </tr>
         </thead>
 
@@ -20,6 +23,8 @@
               <td><%= link_to lead.contact_name, edit_admin_lead_path(lead) %></td>
               <td><%= lead.contact_email %></td>
               <td><%= lead.contact_phone %></td>
+              <td><%= lead.loan_scheme.name %></td>
+              <td><%= lead.status %></td>
             </tr>
           <% end %>
         </tbody>
