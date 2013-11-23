@@ -3,11 +3,11 @@
  <li style="width:22%" ><%=loan.name%></li>
  <li style="width:22%" ><%=loan.interest_rate%></li>
  <li style="width:17%" ><%=loan.income%></li>
- <li style="width:13%" ><%=loan.maximum_period%></li>
+ <li style="width:13%" ><%=loan.maximum_loan_period%></li>
  <li style="width:13%" ><%=loan.maximum_amount%>,<%=loan.minimum_age_requirement%></li>
- <li style="width:11%" ><%=loan.id%></li>
+ <li style="width:11%" ><button type="button" class="btn btn-sm btn-success" which_loan="<%=loan.id%>">Apply</button></li>
 </ul>
 <div class="clear-float"></div>
 <% end %>
-		  
+
 	
