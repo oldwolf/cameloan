@@ -1,7 +1,9 @@
 <div class="col-md-3">
   <div class="well">
     <ul class="nav nav-pills nav-stacked">
-      <li><%= link_to '<span class="glyphicon glyphicon-home"></span> Dashboard'.html_safe, admin_home_dashboard_url %></li>
+      <li class="<%= 'active' if params[:controller] == 'admin/home' %>"><%= link_to '<span class="glyphicon glyphicon-home"></span> Dashboard'.html_safe, admin_home_dashboard_url %></li>
+      <li class="<%= 'active' if params[:controller] == 'admin/contacts' %>"><%= link_to '<span class="glyphicon glyphicon-briefcase"></span> Leads'.html_safe, admin_leads_url %></li>
+      <li class="<%= 'active' if params[:controller] == 'admin/contacts' %>"><%= link_to '<span class="glyphicon glyphicon-user"></span> Contacts'.html_safe, admin_contacts_url %></li>
       <li class="<%= 'active' if params[:controller] == 'admin/contacts' %>"><%= link_to '<span class="glyphicon glyphicon-user"></span> Contacts'.html_safe, admin_contacts_url %></li>
       <li class="<%= 'active' if params[:controller] == 'admin/loan_schemes' %>"><%= link_to '<span class="glyphicon glyphicon-list-alt"></span> Loan Schemes'.html_safe, admin_loan_schemes_url %></li>
       <li class="<%= 'active' if params[:controller] == 'admin/loans' %>"><%= link_to '<span class="glyphicon glyphicon-usd"></span> Loans'.html_safe, admin_loans_url %></li>
