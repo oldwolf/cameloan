@@ -1,0 +1,30 @@
+<div class="row well">
+
+  <%= render "admin/shared/navigation" %>
+
+  <div class="col-md-9">
+    <div class="well">
+      <%= link_to '<span class="glyphicon glyphicon-plus-sign"></span> Add new lead'.html_safe, new_admin_lead_path, { class: "btn btn-primary" } %>
+
+      <table class="table table-condensed">
+        <thead>
+          <tr>
+            <td>Name</td>
+            <td>Income</td>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @leads.each do |lead| %>
+            <tr>
+              <td><%= link_to lead.contact_name, edit_admin_lead_path(lead) %></td>
+              <td><%= lead.contact_email %></td>
+              <td><%= lead.contact_phone %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
