@@ -1,0 +1,13 @@
+<% @loan_schemes.each do |loan_scheme| %>
+ <ul>
+  <li style="width:22%" ><%= loan_scheme.name %></li>
+   <li style="width:22%" ><%= loan_scheme.interest_rate %></li>
+   <li style="width:17%" ><%= loan_scheme.income %></li>
+   <li style="width:13%" ><%= loan_scheme.maximum_loan_period %></li>
+   <li style="width:13%" ><%= loan_scheme.maximum_amount %>,<%= loan_scheme.minimum_age_requirement %></li>
+   <li style="width:11%" ><button type="button" class="btn btn-sm btn-success" which_loan_scheme="<%= loan_scheme.id %>">Apply</button></li>
+ </ul>
+
+<div class="clear-float"></div>
+<% end %>
+

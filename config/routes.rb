@@ -1,9 +1,10 @@
 Cameloan::Application.routes.draw do
   get "home/welcome"
   get "home/about"
-  get "home/contact"
-  post "home/showscheme"
-  post "home/create"
+  get "home/lead_form"
+  post "home/show_schemes"
+  post "home/create_lead"
+  get "home/create_lead"
 
   devise_for :users
 

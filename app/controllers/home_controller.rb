@@ -5,55 +5,54 @@ class HomeController < ApplicationController
   def about
   end
 
-  def contact
+  def lead_form
     @loan_scheme = LoanScheme.find(params[:id])
-    cookies[:before_loan_scheme_id] =  @loan_scheme.id
+    session[:loan_scheme_id] =  @loan_scheme.id
   end
 
-  def create
-    @leads = Leads.new(contact_params)
-    @leads.status = "PENDING"
+  def create_lead
+    @lead = Lead.new(lead_params)
+    @lead.status = "PENDING"
     respond_to do |format|
-      if is_correct_loan_scheme_id(@leads) && @leads.save
-      format.json { render :json => @leads }
+      if @lead.save
+        format.json { render :json => @lead }
       else
-      format.json{ render :json => @leads.errors}
+        format.json{ render :json => @lead.errors}
       end
     end
   end
 
-  def showscheme
-    @loanscheme = LoanScheme.find_by_sql(loanscheme_sql())
-    render  'home/showscheme', :layout => nil
+  def show_schemes
+    @loan_schemes = LoanScheme.all.where("minimum_age_requirement <= :age AND income <= :income AND maximum_amount >= :amount AND maximum_loan_period >= :loan_period",
+      {
+        age: loan_scheme_params[:age],
+        income: loan_scheme_params[:income],
+        amount: loan_scheme_params[:amount],
+        loan_period: loan_scheme_params[:loan_period]
+      }
+    )
+
+    render  'home/show_schemes', :layout => nil
   end
 
   private
-    def safe_params
-      params.require(:loanScheme).permit(:minimum_age_requirement, :income, :maximum_amount, :maximum_loan_period)
-    end
+  def loan_scheme_params
+    params.require(:loan_scheme).permit(:age, :income, :amount, :loan_period)
+  end
 
-    def contact_params
-      params.require(:leads).permit(:contact_name, :contact_phone, :contact_email, :contact_salary, :contact_address, :loan_scheme_id, :contact_age, :contact_borrow_amount, :contact_loan_period)
-    end
+  def lead_params
+    params.require(:lead).permit(:contact_name, :contact_phone, :contact_email, :contact_salary, :contact_address, :loan_scheme_id, :contact_age, :contact_borrow_amount, :contact_loan_period)
+  end
 
-    def is_correct_loan_scheme_id(leads)
-      loan_scheme_id = params[:leads][:loan_scheme_id]
+  def is_correct_loan_scheme_id(leads)
+    loan_scheme_id = params[:leads][:loan_scheme_id]
 
-      if loan_scheme_id == session[:before_loan_scheme_id]
-        loan_scheme = LoanScheme.find(_id)
-        leads.tenant_id = loan_scheme.tenant_id
-        return true
-      end
-      return false
+    if loan_scheme_id == session[:loan_scheme_id]
+      loan_scheme = LoanScheme.find(loan_scheme_idid)
+      leads.tenant_id = loan_scheme.tenant_id
+      return true
     end
-
-    def loanscheme_sql
-      loanparams = LoanScheme.new(safe_params)
-      #loanparams.save
-      sql_condition = []
-      sql_condition[0] = "select * from loan_schemes where minimum_age_requirement >=? and income >=? and maximum_amount <=? and maximum_loan_period <=? order by income desc"
-      sql_condition[1..3] = [loanparams.minimum_age_requirement,loanparams.income,loanparams.maximum_amount,loanparams.maximum_loan_period]
-      logger.info(sql_condition)
-      sql_condition
-    end
+    return false
+  end
 end
+

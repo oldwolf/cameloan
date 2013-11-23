@@ -5,36 +5,36 @@ $(document).ready(() ->
 	#home page
 	searchLoan =
 	  params : () -> 
-	    searchLoan.loan_property["loanScheme[minimum_age_requirement]"] =  $("#minage").val() 
-	    searchLoan.loan_property["loanScheme[income]"] = $("#monthlyIncome").val()
-	    searchLoan.loan_property["loanScheme[maximum_amount]"] =  $("#borrow").val()
-	    searchLoan.loan_property["loanScheme[maximum_loan_period]"] =  $("#borrowingDeadline").val()
+	    searchLoan.loan_property["loan_scheme[age]"] =  $("#minage").val() 
+	    searchLoan.loan_property["loan_scheme[income]"] = $("#monthlyIncome").val()
+	    searchLoan.loan_property["loan_scheme[amount]"] =  $("#borrow").val()
+	    searchLoan.loan_property["loan_scheme[loan_period]"] =  $("#borrowingDeadline").val()
 	    searchLoan.loan_property
 	  loan_property : 
-	    {"loanScheme[minimum_age_requirement]" :0,
-	    "loanScheme[income]" :0,
-	    "loanScheme[maximum_amount]" :0,
-	    "loanScheme[maximum_loan_period]" :0
+	    {"loan_scheme[age]" :0,
+	    "loan_scheme[income]" :0,
+	    "loan_scheme[amount]" :0,
+	    "loan_scheme[loan_period]" :0
 	    }
 	 
 	  verify_params:() ->
 	    loan =   searchLoan.params()
 	   
-	    if !searchLoan.fields_reg.age.test(loan["loanScheme[minimum_age_requirement]"]) 
+	    if !searchLoan.fields_reg.age.test(loan["loan_scheme[age]"]) 
                return false
-	    if  !searchLoan.fields_reg.salary.test(loan["loanScheme[income]"]) 
+	    if  !searchLoan.fields_reg.income.test(loan["loan_scheme[income]"]) 
 	       return false
-	    if  !searchLoan.fields_reg.maximum_amount.test(loan["loanScheme[maximum_amount]"]) 
+	    if  !searchLoan.fields_reg.amount.test(loan["loan_scheme[amount]"]) 
 	       return false
-	    if  !searchLoan.fields_reg.maximum_period.test(loan["loanScheme[maximum_loan_period]"]) 
+	    if  !searchLoan.fields_reg.period.test(loan["loan_scheme[loan_period]"]) 
 	       return false
 	    true
 	  fields_reg:
 	    {
 	     age: /^[2-5]{1}[0-9]{1}$/,
-	     salary:/(^[2-9]{1}[0-9]{3,}$)|(^[1]{1}[0-9]{4,}$)/,
-	     maximum_amount:/^\d{3,}$/,
-	     maximum_period:/^\d{1,2}$/
+	     income:/(^[2-9]{1}[0-9]{3,}$)|(^[1]{1}[0-9]{4,}$)/,
+	     amount:/^\d{3,}$/,
+	     period:/^\d{1,2}$/
 	    }
 	  submit:() ->
 	    bind_event.calculate_unbind_click()
@@ -45,7 +45,7 @@ $(document).ready(() ->
 	    false
 	  load_data:() ->
 	    
-	    $("#searchResultsContent").load('home/showscheme',searchLoan.loan_property,
+	    $("#searchResultsContent").load('home/show_schemes',searchLoan.loan_property,
 	    () -> 
 	       bind_event.calculate_bind_click()
 	       bind_event.apply_bind_click()
@@ -57,21 +57,21 @@ $(document).ready(() ->
 	  check_params = ()->
 	    false
 	   apply_params={
-	    "leads[contact_name]" : $("#contact_name").val(),
-	    "leads[contact_age]"  : $("#contact_age").val(),
-	    "leads[contact_email]" : $("#contact_email").val(),
-	    "leads[contact_phone]" : $("#contact_phone").val(),
-	    "leads[contact_salary]":$("#contact_income").val(),
-	    "leads[contact_borrow_amount]":$("#contact_borrow_amount").val(),
-	    "leads[contact_loan_period]":$("#contact_loan_period").val(),
-	    "leads[contact_address]":$("#contact_address").val(),
-	    "leads[loan_scheme_id]" :$("#which_loan_scheme").val()
+	    "lead[contact_name]" : $("#contact_name").val(),
+	    "lead[contact_age]"  : $("#contact_age").val(),
+	    "lead[contact_email]" : $("#contact_email").val(),
+	    "lead[contact_phone]" : $("#contact_phone").val(),
+	    "lead[contact_salary]":$("#contact_income").val(),
+	    "lead[contact_borrow_amount]":$("#contact_borrow_amount").val(),
+	    "lead[contact_loan_period]":$("#contact_loan_period").val(),
+	    "lead[contact_address]":$("#contact_address").val(),
+	    "lead[loan_scheme_id]" :$("#which_loan_scheme").val()
 	  }
 	  this.submit = ()->
 	    bind_event.contact_apply_unbind_click()
 	    #if check_params()
 	    #  false
-	    $.post("/home/create",apply_params,(msg)->
+	    $.post("/home/create_lead",apply_params,(msg)->
 	     if show_errors msg
 	       $("#fill-contact-info").empty().append($("#application-success").html())
 	     false
@@ -101,8 +101,8 @@ $(document).ready(() ->
 	    $("#calculate").unbind("click")
 	    false
 	  apply_bind_click :() ->
-	   $("div>ul>li>button[which_loan]").bind("click",() ->
-	     window.location.href="home/contact?id="+$(this).attr("which_loan")
+	   $("div>ul>li>button[which_loan_scheme]").bind("click",() ->
+	     window.location.href="home/create_lead?id="+$(this).attr("which_loan_scheme")
 	     true)
 	   false
 	  contact_apply_bind_click :() ->
@@ -138,12 +138,6 @@ $(document).ready(() ->
 	    false
 	 
 	bind_event.init()
-	true  
+	true
 )
-
-
-
-
-
-
 
