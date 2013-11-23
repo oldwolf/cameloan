@@ -1,7 +1,7 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+/**home */
 .search{
   width:100%;
   margin:0;
@@ -151,13 +151,38 @@
   border-bottom: 1px solid #BDB4B4;	
 }
 .search-results-content li{
-  padding:10px 4px 0 4px;
+  padding:0px 0px 0px 0px;
   list-style-type:none;
   float:left;
   clear:right;
-  line-height:20px;
+  line-height:35px;
   height:100%;
   text-align:center;
   font-size:1em;
   overflow:hidden;
 }
+
+/**contact*/
+
+.fill-contact-info{
+   width:50%;
+   height:auto;
+   float:left;
+}
+.fill-contact-info label{
+   text-align:right;
+   width:20em;
+}
+.fill-contact-info label span{
+  color:firebrick;
+ }
+ .fill-contact-info .fill-contact-info-button{
+  padding-left:23em;
+  padding-top:1em;
+  }
+ .contact-selected-loan-shceme{
+   width:50%;
+   float:right;
+   height:auto;
+ }
+ /** end contact*/
