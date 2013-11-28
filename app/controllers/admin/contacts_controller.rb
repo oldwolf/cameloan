@@ -1,5 +1,6 @@
 class Admin::ContactsController < Admin::ApplicationController
   before_action :set_contact, only: [:edit, :update, :destroy]
+  before_action :set_contact_method, only: [:new, :edit]
 
   def index
     @contacts = Contact.all
@@ -47,10 +48,15 @@ class Admin::ContactsController < Admin::ApplicationController
   end
 
   private
-
     # Use callbacks to share common setup or constraints between actions.
     def set_contact
       @contact = Contact.find(params[:id])
+    end
+
+    def set_contact_method
+      @primary_phone = @contact.phones.where(category: "Primary Phone").first_or_initialize
+      @primary_fax = @contact.phones.where(category: "Primary Fax").first_or_initialize
+      @primary_address = @contact.addresses.where(category: "Primary Address").first_or_initialize
     end
 
     def safe_params

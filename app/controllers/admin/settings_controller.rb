@@ -4,10 +4,6 @@ class Admin::SettingsController < Admin::ApplicationController
   def edit
     @primary_phone = @tenant.phones.where(category: "Primary").first_or_initialize
     @primary_address = @tenant.addresses.where(category: "Primary").first_or_initialize
-    #primary_phone = @tenant.phones.where({category: "Primary"}).first
-    #@primary_phone = primary_phone.nil? ? @tenant.phones.build(category: "Primary") : primary_phone
-    #primary_address = @tenant.addresses.where({category: "Primary"}).first
-    #@primary_address = primary_address.nil? ? @tenant.addresses.build(category: "Primary") : primary_address
   end
 
   def update
