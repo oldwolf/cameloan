@@ -47,10 +47,10 @@ ActiveRecord::Schema.define(version: 201311191517222) do
     t.string   "contact_name"
     t.string   "contact_phone"
     t.string   "contact_email"
-    t.string   "contact_address"
-    t.decimal  "contact_salary"
+    t.text     "contact_address"
+    t.decimal  "contact_income"
     t.integer  "contact_age"
-    t.integer  "contact_borrow_amount"
+    t.integer  "contact_loan_amount"
     t.integer  "contact_loan_period"
     t.string   "status"
     t.integer  "tenant_id"
@@ -66,29 +66,28 @@ ActiveRecord::Schema.define(version: 201311191517222) do
   create_table "loan_schemes", force: true do |t|
     t.string   "name"
     t.text     "description"
-    t.decimal  "minimum_amount"
-    t.decimal  "maximum_amount"
-    t.decimal  "interest_rate",           default: 12.0,   null: false
-    t.boolean  "is_income_before_tax",    default: true,   null: false
-    t.decimal  "income",                  default: 1500.0, null: false
+    t.decimal  "minimum_amount",          default: 0.0,     null: false
+    t.decimal  "maximum_amount",          default: 10000.0, null: false
+    t.decimal  "interest_rate",           default: 12.0,    null: false
+    t.boolean  "is_income_before_tax",    default: true,    null: false
+    t.decimal  "minimum_income",          default: 1500.0,  null: false
     t.boolean  "need_income_statement"
-    t.integer  "minimum_working_period",  default: 6,      null: false
+    t.integer  "minimum_working_period",  default: 6,       null: false
     t.integer  "working_period_unit_id"
     t.integer  "country_id"
     t.integer  "state_id"
     t.integer  "city_id"
-    t.integer  "minimum_age_requirement", default: 20,     null: false
-    t.integer  "maximum_age_requirement", default: 60,     null: false
+    t.integer  "minimum_age_requirement", default: 20,      null: false
+    t.integer  "maximum_age_requirement", default: 60,      null: false
     t.integer  "loan_period_unit_id"
-    t.integer  "minimum_loan_period",     default: 6,      null: false
-    t.integer  "maximum_loan_period",     default: 36,     null: false
-    t.boolean  "need_mortgage",           default: false,  null: false
-    t.boolean  "need_guarantor",          default: false,  null: false
-    t.integer  "fastest_approval_day",    default: 3,      null: false
-    t.boolean  "pulished",                default: true,   null: false
-    t.boolean  "active",                  default: true,   null: false
-    t.datetime "start_at"
-    t.datetime "stop_at"
+    t.integer  "minimum_loan_period",     default: 6,       null: false
+    t.integer  "maximum_loan_period",     default: 36,      null: false
+    t.boolean  "need_mortgage",           default: false,   null: false
+    t.boolean  "need_guarantor",          default: false,   null: false
+    t.integer  "fastest_approval_day",    default: 3,       null: false
+    t.boolean  "publish",                 default: true,    null: false
+    t.datetime "published_at"
+    t.boolean  "active",                  default: true,    null: false
     t.integer  "tenant_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -96,18 +95,9 @@ ActiveRecord::Schema.define(version: 201311191517222) do
 
   add_index "loan_schemes", ["city_id"], name: "index_loan_schemes_on_city_id"
   add_index "loan_schemes", ["country_id"], name: "index_loan_schemes_on_country_id"
-  add_index "loan_schemes", ["income"], name: "index_loan_schemes_on_income"
   add_index "loan_schemes", ["interest_rate"], name: "index_loan_schemes_on_interest_rate"
-  add_index "loan_schemes", ["maximum_age_requirement"], name: "index_loan_schemes_on_maximum_age_requirement"
-  add_index "loan_schemes", ["maximum_loan_period"], name: "index_loan_schemes_on_maximum_loan_period"
-  add_index "loan_schemes", ["minimum_age_requirement"], name: "index_loan_schemes_on_minimum_age_requirement"
-  add_index "loan_schemes", ["minimum_loan_period"], name: "index_loan_schemes_on_minimum_loan_period"
-  add_index "loan_schemes", ["minimum_working_period"], name: "index_loan_schemes_on_minimum_working_period"
-  add_index "loan_schemes", ["need_guarantor"], name: "index_loan_schemes_on_need_guarantor"
-  add_index "loan_schemes", ["need_mortgage"], name: "index_loan_schemes_on_need_mortgage"
   add_index "loan_schemes", ["state_id"], name: "index_loan_schemes_on_state_id"
   add_index "loan_schemes", ["tenant_id"], name: "index_loan_schemes_on_tenant_id"
-  add_index "loan_schemes", ["working_period_unit_id"], name: "index_loan_schemes_on_working_period_unit_id"
 
   create_table "loans", force: true do |t|
     t.decimal  "interest_rate"

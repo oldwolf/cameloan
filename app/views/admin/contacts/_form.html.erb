@@ -54,7 +54,7 @@
           <%= f.label :primary_address, class: "col-lg-3 control-label" %>
           <div class="col-lg-9">
             <%= f.fields_for :addresses, @primary_address do |form| %>
-              <%= form.text_field :full_address, class: "form-control" %>
+              <%= form.text_area :full_address, class: "form-control" %>
               <%= form.hidden_field :category %>
             <% end %>
           </div>

@@ -1,0 +1,13 @@
+<div class="tab-pane" id="billing">
+  <div class="form-group">
+    <%= f.label :billing_address, class: "col-lg-3 control-label" %>
+    <div class="col-lg-6">
+      <%= f.fields_for :addresses, @billing_address do |form| %>
+        <%= form.text_area :full_address, class: "form-control" %>
+        <%= form.hidden_field :category %>
+      <% end %>
+    </div>
+  </div>
+
+</div> <!-- End of .tab-pane #billing -->
+

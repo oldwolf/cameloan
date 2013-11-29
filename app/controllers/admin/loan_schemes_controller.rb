@@ -52,6 +52,6 @@ class Admin::LoanSchemesController < Admin::ApplicationController
   end
 
   def safe_params
-    params.require(:loan_scheme).permit(:id, :name, :description, :minimum_amount, :maximum_amount, :interest_rate, :is_income_before_tax, :income, :need_income_statement, :minimum_working_period, :minimum_working_period_id, :country_id, :state_id, :city_id, :minimum_age_requirement, :maximum_age_requirement, :need_mortgate, :need_guarantor, :fastest_approval_date, :tenant_id, :published, :active, :start_at, :stop_at)
+    params.require(:loan_scheme).permit(:id, :name, :description, :minimum_amount, :maximum_amount, :interest_rate, :is_income_before_tax, :minimum_income, :need_income_statement, :minimum_working_period, :minimum_working_period_id, :country_id, :state_id, :city_id, :minimum_age_requirement, :maximum_age_requirement, :need_mortgate, :need_guarantor, :fastest_approval_date, :tenant_id, :publish, :published_at, :active)
   end
 end

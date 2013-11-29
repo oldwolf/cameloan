@@ -66,10 +66,10 @@ Cameloan::Application.routes.draw do
 
   constraints(Subdomain) do
     namespace :admin do
-      get "home/welcome"
+      post "home/welcome"
       get "home/dashboard"
 
-      root "home#welcome"
+      root "home#dashboard"
 
       resources :contacts
       resources :loan_schemes

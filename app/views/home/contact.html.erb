@@ -1,0 +1,69 @@
+<div id="fill-contact-info">
+<h1>Now you're just a click away from applying for a loan</h1>
+<p>Simply answer the questions below and we will forward your loan request to the bank you've chosen</p>
+ <div>
+  <div class="fill-contact-info">
+  
+    <input type="hidden" value="<%=@loan_scheme.id%>" id="which_loan_scheme"/>
+	 <div>
+		<label >Name <span class="form-required" title="This field is required.">*</span></label>
+		<input type="text"  class="form-text required" id="contact_name" reg="\S" tips="can't be blank">
+	 </div>
+	 <div>
+		<label >Age <span class="form-required" title="This field is required.">*</span></label>
+		<input type="text"  class="form-text required" id="contact_age" value="<%=@loan_scheme.minimum_age_requirement%>" reg="(^1[8-9]{1}$)|(^[2-5]{1}[0-9]{1}$)" tips="age than 18 and age  low 60">
+	 </div>
+	  <div> 
+		<label >Email <span class="form-required" title="This field is required.">*</span></label>
+		<input type="text"  class="form-text required" id="contact_email" reg="^([\w\.]+)@([\w\.]+)\.([a-z\.]{2,8})$" tips="your email address">
+	 </div>
+	 <div>
+		<label >Best contact number <span class="form-required" title="This field is required.">*</span></label>
+		<input type="text"  class="form-text required  error" required id="contact_phone" reg="^[\d-]{4,}$" tips="your phone number">
+	 </div>
+	  <div>
+		<label >How much do you wish to borrow? <span class="form-required" title="This field is required.">*</span></label>
+		<input type="text"  class="form-text required" id="contact_borrow_amount"  value="<%=@loan_scheme.maximum_amount%>" reg="^[\d\.]{1,}" tips="can't be blank">
+	 </div>
+	 <div>
+		<label >For how long? <span class="form-required" title="This field is required.">*</span></label>
+		<input type="text"  class="form-text required" id="contact_loan_period" reg="^[\d]{1,}" tips="can't be blank" value="<%=@loan_scheme.maximum_loan_period%>">
+	 </div>
+	 <div>
+		<label >Your monthly income <span class="form-required" title="This field is required.">*</span></label>
+		<input type="text"  class="form-text required" id="contact_income" value="<%=@loan_scheme.income%>" reg="^[\d\.]{1,}" tips="can't be blank">
+	 </div>
+	 <div>
+		<label >Your Address <span class="form-required" title="This field is required."></span></label>
+		<input type="text"  class="form-text required" id="contact_address" >
+	 </div>
+	 <div class="fill-contact-info-button">
+		<button type="button" class="btn btn-lg btn-primary" id="contact_apply">Apply Now</button>
+	 </div>
+
+	
+ </div>
+ <div class="contact-selected-loan-shceme">
+	<h5>You selected the following product:</h5>
+	<p>product desc ::::::::::::::</p>
+ </div>
+ <div class="clear-float"></div>
+ </div>
+</div>
+<div id="application-success" style="display:none;" >
+<h1 >Thanks for your application</h1>
+<p>You have successfully applied for a personal loan through XXXX!</p>
+<h3>Here's what will happen now:</h3>
+<ol><li>Our personal loan consultant will call you to confirm your submission and answer any questions you might have. This won't take more than a minute of your time.</li>
+<li>A bank representative will contact you to agree on the most convenient way for you to submit your documents.</li>
+<li>Once your application is approved, the bank will let you know.</li>
+</ol>
+<p>So,all you need to do now is relax and wait for our call.<br/>
+<span>We will call you within 48 hours, the call will take 
+<strong>no more than 5 mins</strong> of your time, promise! Now it's the bank's turn to queue up to talk to you.
+</span>
+</p>
+<p>In case you have any other questions, please visit our <a href="#">FAQ's page</a></p>
+<p></p>
+<p><a >In the mean time, check out some personal loan articles on XXXX.</a></p>
+</div>
